@@ -24,7 +24,7 @@
     "run",
     "array",
     "run auto",
-    "order"
+    "order",
     "async.auto"
   ],
   "license": "MIT",
