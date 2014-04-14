@@ -1,6 +1,6 @@
 # run-auto [![travis](https://img.shields.io/travis/feross/run-auto.svg)](https://travis-ci.org/feross/run-auto) [![npm](https://img.shields.io/npm/v/run-auto.svg)](https://npmjs.org/package/run-auto) [![gittip](https://img.shields.io/gittip/feross.svg)](https://www.gittip.com/feross/)
 
-### Determine the best order for running async functions, ***LIKE MAGIC!***
+#### Determine the best order for running async functions, ***LIKE MAGIC!***
 
 ![auto](https://raw.githubusercontent.com/feross/run-auto/master/img.png) [![browser support](https://ci.testling.com/feross/run-auto.png)](https://ci.testling.com/feross/run-auto)
 
