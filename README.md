@@ -1,4 +1,4 @@
-# run-auto [![travis](https://img.shields.io/travis/feross/run-auto.svg)](https://travis-ci.org/feross/run-auto) [![npm](https://img.shields.io/npm/v/run-auto.svg)](https://npmjs.org/package/run-auto) [![gittip](https://img.shields.io/gittip/feross.svg)](https://www.gittip.com/feross/)
+# run-auto [![travis](https://img.shields.io/travis/feross/run-auto.svg)](https://travis-ci.org/feross/run-auto) [![npm](https://img.shields.io/npm/v/run-auto.svg)](https://npmjs.org/package/run-auto)
 
 #### Determine the best order for running async functions, ***LIKE MAGIC!***
 
