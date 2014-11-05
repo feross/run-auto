@@ -43,7 +43,7 @@ be performed, and the results object will only contain partial results.
 ```js
 var auto = require('run-auto')
 
-async.auto({
+auto({
   getData: function (callback) {
     console.log('in getData')
     // async code to get some data
