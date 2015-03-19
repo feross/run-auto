@@ -38,7 +38,8 @@ test('functions run in parallel', function (t) {
   }
 
   auto(tasks, function (err) {
-    t.deepEqual(callOrder, ['task2','task6','task3','task5','task1','task4'])
+    t.error(err)
+    t.deepEqual(callOrder, ['task2', 'task6', 'task3', 'task5', 'task1', 'task4'])
     t.end()
   })
 })

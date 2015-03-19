@@ -33,9 +33,9 @@ test('auto error should pass partial results', function (t) {
   }
 
   auto(tasks, function (err, results) {
-      t.ok(err instanceof Error)
-      t.equals(results.task1, 'result1')
-      t.equals(results.task2, 'result2')
-      t.end()
+    t.ok(err instanceof Error)
+    t.equals(results.task1, 'result1')
+    t.equals(results.task2, 'result2')
+    t.end()
   })
 })
