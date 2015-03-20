@@ -1,3 +1,5 @@
+var dezalgo = require('dezalgo')
+
 var _setImmediate
 if (typeof setImmediate === 'function') {
   _setImmediate = function (fn) {
@@ -11,22 +13,22 @@ if (typeof setImmediate === 'function') {
 }
 
 module.exports = function (tasks, cb) {
-  cb = cb || function () {}
+  if (cb) cb = dezalgo(cb)
+  var results = {}
+  var listeners = []
+
   var keys = Object.keys(tasks)
   var remainingTasks = keys.length
 
   if (!remainingTasks) {
-    return cb()
+    return cb && cb(null, results)
   }
 
-  var results = {}
-  var listeners = []
-
-  var addListener = function (fn) {
+  function addListener (fn) {
     listeners.unshift(fn)
   }
 
-  var removeListener = function (fn) {
+  function removeListener (fn) {
     for (var i = 0; i < listeners.length; i += 1) {
       if (listeners[i] === fn) {
         listeners.splice(i, 1)
@@ -35,7 +37,7 @@ module.exports = function (tasks, cb) {
     }
   }
 
-  var taskComplete = function () {
+  function taskComplete () {
     remainingTasks -= 1
     listeners.slice(0).forEach(function (fn) {
       fn()
@@ -46,7 +48,7 @@ module.exports = function (tasks, cb) {
     if (!remainingTasks) {
       var thecb = cb
       // prevent final cb from calling itself if it errors
-      cb = function () {}
+      cb = null
       thecb(null, results)
     }
   })
@@ -69,9 +71,9 @@ module.exports = function (tasks, cb) {
           safeResults[rkey] = results[rkey]
         })
         safeResults[key] = args
-        cb(err, safeResults)
+        if (cb) cb(err, safeResults)
         // stop subsequent errors hitting cb multiple times
-        cb = function () {}
+        cb = null
       } else {
         results[key] = args
         _setImmediate(taskComplete)
