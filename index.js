@@ -45,7 +45,7 @@ module.exports = function (tasks, cb) {
   }
 
   addListener(function () {
-    if (!remainingTasks) {
+    if (!remainingTasks && cb) {
       var thecb = cb
       // prevent final cb from calling itself if it errors
       cb = null
