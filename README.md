@@ -115,6 +115,7 @@ Works great in the browser with [browserify](http://browserify.org/)!
 ### see also
 
 - [run-parallel](https://github.com/feross/run-parallel)
+- [run-parallel-limit](https://github.com/feross/run-parallel-limit)
 - [run-series](https://github.com/feross/run-series)
 - [run-waterfall](https://github.com/feross/run-waterfall)
 
