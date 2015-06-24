@@ -1,8 +1,15 @@
-# run-auto [![travis](https://img.shields.io/travis/feross/run-auto.svg)](https://travis-ci.org/feross/run-auto) [![npm](https://img.shields.io/npm/v/run-auto.svg)](https://npmjs.org/package/run-auto) [![npm](https://img.shields.io/npm/dm/run-auto.svg)](https://npmjs.org/package/run-auto)
+# run-auto [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url]
+
+[travis-image]: https://img.shields.io/travis/feross/run-auto.svg?style=flat
+[travis-url]: https://travis-ci.org/feross/run-auto
+[npm-image]: https://img.shields.io/npm/v/run-auto.svg?style=flat
+[npm-url]: https://npmjs.org/package/run-auto
+[downloads-image]: https://img.shields.io/npm/dm/run-auto.svg?style=flat
+[downloads-url]: https://npmjs.org/package/run-auto
 
 #### Determine the best order for running async functions, ***LIKE MAGIC!***
 
-![auto](https://raw.githubusercontent.com/feross/run-auto/master/img.png) [![browser support](https://ci.testling.com/feross/run-auto.png)](https://ci.testling.com/feross/run-auto)
+![auto](https://raw.githubusercontent.com/feross/run-auto/master/img.png) [![Sauce Test Status](https://saucelabs.com/browser-matrix/run-auto.svg)](https://saucelabs.com/u/run-auto)
 
 ### install
 
