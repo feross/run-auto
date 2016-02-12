@@ -1,10 +1,10 @@
 # run-auto [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url]
 
-[travis-image]: https://img.shields.io/travis/feross/run-auto.svg?style=flat
+[travis-image]: https://img.shields.io/travis/feross/run-auto/master.svg
 [travis-url]: https://travis-ci.org/feross/run-auto
-[npm-image]: https://img.shields.io/npm/v/run-auto.svg?style=flat
+[npm-image]: https://img.shields.io/npm/v/run-auto.svg
 [npm-url]: https://npmjs.org/package/run-auto
-[downloads-image]: https://img.shields.io/npm/dm/run-auto.svg?style=flat
+[downloads-image]: https://img.shields.io/npm/dm/run-auto.svg
 [downloads-url]: https://npmjs.org/package/run-auto
 
 #### Determine the best order for running async functions, ***LIKE MAGIC!***
