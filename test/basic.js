@@ -5,7 +5,7 @@ test('functions run in parallel', function (t) {
   var callOrder = []
 
   var tasks = {
-    task1: ['task2', function (cb) {
+    task1: ['task2', function (results, cb) {
       setTimeout(function () {
         callOrder.push('task1')
         cb(null, 'res1')
@@ -17,21 +17,21 @@ test('functions run in parallel', function (t) {
         cb(null, 'res2')
       }, 50)
     },
-    task3: ['task2', function (cb) {
+    task3: ['task2', function (results, cb) {
       callOrder.push('task3')
       cb(null, 'res3')
     }],
-    task4: ['task1', 'task2', function (cb) {
+    task4: ['task1', 'task2', function (results, cb) {
       callOrder.push('task4')
       cb(null, 'res4')
     }],
-    task5: ['task2', function (cb) {
+    task5: ['task2', function (results, cb) {
       setTimeout(function () {
         callOrder.push('task5')
         cb(null, 'res5')
       }, 0)
     }],
-    task6: ['task2', function (cb) {
+    task6: ['task2', function (results, cb) {
       callOrder.push('task6')
       cb(null, 'res6')
     }]

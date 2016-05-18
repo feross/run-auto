@@ -25,25 +25,20 @@ Determines the best order for running the functions in `tasks`, based on their
 requirements. Each function can optionally depend on other functions being completed
 first, and each function is run as soon as its requirements are satisfied.
 
-If any of the functions pass an error to their callback, it will not complete (so any
-other functions depending on it will not run), and the main `callback` is immediately
-called with the error. Functions also receive an object containing the results of
-functions which have completed so far.
+If any of the functions pass an error to their callback, the `auto` sequence will
+stop. Further tasks will not execute (so any other functions depending on it will
+not run), and the main `callback` is immediately called with the error.
 
-For a complicated series of async tasks, using `auto` makes adding new tasks much easier
-(and the code more readable).
+Functions also receive an object containing the results of functions which have
+completed so far as the first argument, if they have dependencies. If a task
+function has no dependencies, it will only be passed a callback.
 
 ##### arguments
 
-- `tasks` - An object. Each of its properties is either a function or an array of
-requirements, with the function itself the last item in the array. The object's key of a property serves as the name of the task defined by that property, i.e. can be used when specifying requirements for other tasks. The function receives two arguments:
-(1) a `callback(err, result)` which must be called when finished, passing an `error`
-(which can be `null`) and the result of the function's execution, and (2) a `results`
-object, containing the results of the previously executed functions.
-- `callback(err, results)` - An optional callback which is called when all the tasks have
-been completed. It receives the `err` argument if any tasks pass an error to their
-callback. Results are always returned; however, if an error occurs, no further tasks will
-be performed, and the results object will only contain partial results.
+- `tasks` - An object. Each of its properties is either a function or an array of requirements, with the function itself the last item in the array. The object's key of a property serves as the name of the task defined by that property, i.e. can be used when specifying requirements for other tasks. The function receives one or two arguments:
+  - a `results` object, containing the results of the previously executed functions, only passed if the task has any dependencies, **Argument order changed in 2.0**
+  - a `callback(err, result)` function, which must be called when finished, passing an `error` (which can be `null`) and the result of the function's execution. **Argument order changed in 2.0**
+- `callback(err, results)` - An optional callback which is called when all the tasks have been completed. It receives the `err` argument if any `tasks` pass an error to their callback. Results are always returned; however, if an error occurs, no further `tasks` will be performed, and the results object will only contain partial results.
 
 ##### example
 
@@ -62,13 +57,13 @@ auto({
     // this is run at the same time as getting the data
     callback(null, 'folder')
   },
-  writeFile: ['getData', 'makeFolder', function (callback, results) {
+  writeFile: ['getData', 'makeFolder', function (results, callback) {
     console.log('in writeFile', JSON.stringify(results))
     // once there is some data and the directory exists,
     // write the data to a file in the directory
     callback(null, 'filename')
   }],
-  emailLink: ['writeFile', function (callback, results) {
+  emailLink: ['writeFile', function (results, callback) {
     console.log('in emailLink', JSON.stringify(results))
     // once the file is written let's email a link to it...
     // results.writeFile contains the filename returned by writeFile.

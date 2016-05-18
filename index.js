@@ -87,12 +87,20 @@ module.exports = function (tasks, cb) {
     }
 
     if (ready()) {
-      task[task.length - 1](taskcb, results)
+      if (requires.length === 0) {
+        task[task.length - 1](taskcb)
+      } else {
+        task[task.length - 1](results, taskcb)
+      }
     } else {
       var listener = function () {
         if (ready()) {
           removeListener(listener)
-          task[task.length - 1](taskcb, results)
+          if (requires.length === 0) {
+            task[task.length - 1](taskcb)
+          } else {
+            task[task.length - 1](results, taskcb)
+          }
         }
       }
       addListener(listener)

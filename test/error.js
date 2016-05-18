@@ -9,7 +9,7 @@ test('functions that return errors', function (t) {
       t.pass('cb 1')
       cb(new Error('oops'))
     },
-    b: ['a', function (cb) {
+    b: ['a', function (results, cb) {
       t.fail('cb 2 should not get called')
     }]
   }
@@ -24,10 +24,10 @@ test('auto error should pass partial results', function (t) {
     task1: function (cb) {
       cb(false, 'result1')
     },
-    task2: ['task1', function (cb) {
+    task2: ['task1', function (results, cb) {
       cb(new Error('testerror'), 'result2')
     }],
-    task3: ['task2', function (cb) {
+    task3: ['task2', function (results, cb) {
       t.fail('task3 should not be called')
     }]
   }
