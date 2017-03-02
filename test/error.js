@@ -22,7 +22,7 @@ test('functions that return errors', function (t) {
 test('auto error should pass partial results', function (t) {
   var tasks = {
     task1: function (cb) {
-      cb(false, 'result1')
+      cb(null, 'result1')
     },
     task2: ['task1', function (results, cb) {
       cb(new Error('testerror'), 'result2')
