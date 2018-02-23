@@ -1,5 +1,7 @@
 # run-auto [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url] [![javascript style guide][standard-image]][standard-url]
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/feross/run-auto.svg)](https://greenkeeper.io/)
+
 [travis-image]: https://img.shields.io/travis/feross/run-auto/master.svg
 [travis-url]: https://travis-ci.org/feross/run-auto
 [npm-image]: https://img.shields.io/npm/v/run-auto.svg
