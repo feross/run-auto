@@ -1,6 +1,10 @@
 language: node_js
 node_js:
-- iojs
+  - lts/*
+addons:
+  sauce_connect: true
+  hosts:
+    - airtap.local
 env:
   global:
   - secure: iHaEA7KOZQjPmhaHtBh6Hbb9oyE/tHjNX6SfpGMLiqeLuI8f1eLP/ZYzXNfnBrk+ewW8PllTNAOeBFX7YEu8bShEMr4lTnoVxLruP0kjCs9a45y5DuEVbwbkK3bQrJEcpA/CSsPEwuzAd6tp4BqMs1EO3+bgJtF72I2pOfsvQrA=
