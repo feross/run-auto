@@ -1,3 +1,5 @@
+module.exports = runAuto
+
 var dezalgo = require('dezalgo')
 
 var _setImmediate
@@ -12,7 +14,7 @@ if (typeof setImmediate === 'function') {
   }
 }
 
-module.exports = function (tasks, cb) {
+function runAuto (tasks, cb) {
   if (cb) cb = dezalgo(cb)
   var results = {}
   var listeners = []
