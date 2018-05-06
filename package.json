@@ -14,7 +14,7 @@
     "dezalgo": "^1.0.1"
   },
   "devDependencies": {
-    "airtap": "0.0.4",
+    "airtap": "0.0.5",
     "standard": "*",
     "tape": "^4.0.0"
   },
