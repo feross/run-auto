@@ -2,6 +2,8 @@ module.exports = runAuto
 
 var dezalgo = require('dezalgo')
 
+var hasOwnProperty = Object.prototype.hasOwnProperty
+
 var _setImmediate
 if (typeof setImmediate === 'function') {
   _setImmediate = function (fn) {
@@ -84,8 +86,8 @@ function runAuto (tasks, cb) {
 
     var ready = function () {
       return requires.reduce(function (a, x) {
-        return a && results.hasOwnProperty(x)
-      }, true) && !results.hasOwnProperty(key)
+        return a && hasOwnProperty.call(results, x)
+      }, true) && !hasOwnProperty.call(results, key)
     }
 
     if (ready()) {
