@@ -1,3 +1,4 @@
+/*! run-auto. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 module.exports = runAuto
 
 var dezalgo = require('dezalgo')
