@@ -1,5 +1,5 @@
-var auto = require('../')
-var test = require('tape')
+const auto = require('../')
+const test = require('tape')
 
 test('empty tasks object', function (t) {
   t.plan(1)

@@ -1,10 +1,10 @@
-var auto = require('../')
-var test = require('tape')
+const auto = require('../')
+const test = require('tape')
 
 test('no callback', function (t) {
   t.plan(2)
 
-  var tasks = {
+  const tasks = {
     a: function (cb) {
       t.pass('cb 1')
     },

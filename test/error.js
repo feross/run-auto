@@ -1,10 +1,10 @@
-var auto = require('../')
-var test = require('tape')
+const auto = require('../')
+const test = require('tape')
 
 test('functions that return errors', function (t) {
   t.plan(2)
 
-  var tasks = {
+  const tasks = {
     a: function (cb) {
       t.pass('cb 1')
       cb(new Error('oops'))
@@ -20,7 +20,7 @@ test('functions that return errors', function (t) {
 })
 
 test('auto error should pass partial results', function (t) {
-  var tasks = {
+  const tasks = {
     task1: function (cb) {
       cb(null, 'result1')
     },

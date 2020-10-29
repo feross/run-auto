@@ -1,10 +1,10 @@
-var auto = require('../')
-var test = require('tape')
+const auto = require('../')
+const test = require('tape')
 
 test('functions run in parallel', function (t) {
-  var callOrder = []
+  const callOrder = []
 
-  var tasks = {
+  const tasks = {
     task1: ['task2', function (results, cb) {
       setTimeout(function () {
         callOrder.push('task1')

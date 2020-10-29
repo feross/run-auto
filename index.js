@@ -1,11 +1,11 @@
 /*! run-auto. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 module.exports = runAuto
 
-var dezalgo = require('dezalgo')
+const dezalgo = require('dezalgo')
 
-var hasOwnProperty = Object.prototype.hasOwnProperty
+const hasOwnProperty = Object.prototype.hasOwnProperty
 
-var _setImmediate
+let _setImmediate
 if (typeof setImmediate === 'function') {
   _setImmediate = function (fn) {
     // not a direct alias for IE10+ compatibility
@@ -19,11 +19,11 @@ if (typeof setImmediate === 'function') {
 
 function runAuto (tasks, cb) {
   if (cb) cb = dezalgo(cb)
-  var results = {}
-  var listeners = []
+  const results = {}
+  const listeners = []
 
-  var keys = Object.keys(tasks)
-  var remainingTasks = keys.length
+  const keys = Object.keys(tasks)
+  let remainingTasks = keys.length
 
   if (!remainingTasks) {
     return cb && cb(null, results)
@@ -34,7 +34,7 @@ function runAuto (tasks, cb) {
   }
 
   function removeListener (fn) {
-    for (var i = 0; i < listeners.length; i += 1) {
+    for (let i = 0; i < listeners.length; i += 1) {
       if (listeners[i] === fn) {
         listeners.splice(i, 1)
         return
@@ -51,7 +51,7 @@ function runAuto (tasks, cb) {
 
   addListener(function () {
     if (!remainingTasks && cb) {
-      var thecb = cb
+      const thecb = cb
       // prevent final cb from calling itself if it errors
       cb = null
       thecb(null, results)
@@ -59,19 +59,19 @@ function runAuto (tasks, cb) {
   })
 
   keys.forEach(function (key) {
-    var task = Array.isArray(tasks[key])
+    const task = Array.isArray(tasks[key])
       ? tasks[key]
       : [tasks[key]]
-    var requires = task.slice(0, task.length - 1)
+    const requires = task.slice(0, task.length - 1)
 
-    var taskcb = function (err) {
-      var args = Array.prototype.slice.call(arguments, 1)
+    const taskcb = function (err) {
+      let args = Array.prototype.slice.call(arguments, 1)
       if (args.length <= 1) {
         args = args[0]
       }
 
       if (err) {
-        var safeResults = {}
+        const safeResults = {}
         Object.keys(results).forEach(function (rkey) {
           safeResults[rkey] = results[rkey]
         })
@@ -85,7 +85,7 @@ function runAuto (tasks, cb) {
       }
     }
 
-    var ready = function () {
+    const ready = function () {
       return requires.reduce(function (a, x) {
         return a && hasOwnProperty.call(results, x)
       }, true) && !hasOwnProperty.call(results, key)
@@ -98,7 +98,7 @@ function runAuto (tasks, cb) {
         task[task.length - 1](results, taskcb)
       }
     } else {
-      var listener = function () {
+      const listener = function () {
         if (ready()) {
           removeListener(listener)
           if (requires.length === 0) {
